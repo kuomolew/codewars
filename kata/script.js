@@ -55,21 +55,54 @@
 
 //To be a senior, a member must be at least 55 years old and have a handicap greater than 7. In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap. Input will consist of a list of lists containing two items each. Each list contains information for a single potential member. Information consists of an integer for the person's age and an integer for the person's handicap.
 
-function openOrSenior(data) {
-  return data.map((el) => {
-    return el[0] >= 55 && el[1] > 7 ? "Senior" : "Open";
-  });
+// function openOrSenior(data) {
+//   return data.map((el) => {
+//     return el[0] >= 55 && el[1] > 7 ? "Senior" : "Open";
+//   });
 
-    
+// }
+
+// let test = [
+//   [45, 12],
+//   [55, 21],
+//   [19, -2],
+//   [104, 20],
+// ];
+
+// // ['Open', 'Senior', 'Open', 'Senior']
+
+// openOrSenior(test);
+
+/////////////////////////////////////////////
+
+//Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
+// Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+// If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
+// "is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
+// "4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
+// ""  -->  ""
+
+function order(words) {
+  if (!words) {
+    return words;
+  }
+  let wordsObject = {};
+  let sortedArray = [];
+  let wordsArray = words.split(' ');
+  let numbersArray = wordsArray.map((el) => {
+    for (char of el) {
+      if (+char) {
+        wordsObject[char] = el;
+        return char;
+      }
+    }
+  });
+  numbersArray.sort();
+  for (let i = 0; i < numbersArray.length; i++) {
+    sortedArray.push(wordsObject[numbersArray[i]]);
+  }
+  return sortedArray.join(' ');
 }
 
-let test = [
-  [45, 12],
-  [55, 21],
-  [19, -2],
-  [104, 20],
-];
-
-// ['Open', 'Senior', 'Open', 'Senior']
-
-openOrSenior(test);
+let test = "is2 Thi1s T4est 3a";
+order(test);
