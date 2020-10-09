@@ -82,27 +82,72 @@
 // "4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
 // ""  -->  ""
 
-function order(words) {
-  if (!words) {
-    return words;
-  }
-  let wordsObject = {};
-  let sortedArray = [];
-  let wordsArray = words.split(' ');
-  let numbersArray = wordsArray.map((el) => {
-    for (char of el) {
-      if (+char) {
-        wordsObject[char] = el;
-        return char;
-      }
-    }
-  });
-  numbersArray.sort();
-  for (let i = 0; i < numbersArray.length; i++) {
-    sortedArray.push(wordsObject[numbersArray[i]]);
-  }
-  return sortedArray.join(' ');
-}
+// function order(words) {
+//   if (!words) {
+//     return words;
+//   }
+//   let wordsObject = {};
+//   let sortedArray = [];
+//   let wordsArray = words.split(' ');
+//   let numbersArray = wordsArray.map((el) => {
+//     for (char of el) {
+//       if (+char) {
+//         wordsObject[char] = el;
+//         return char;
+//       }
+//     }
+//   });
+//   numbersArray.sort();
+//   for (let i = 0; i < numbersArray.length; i++) {
+//     sortedArray.push(wordsObject[numbersArray[i]]);
+//   }
+//   return sortedArray.join(' ');
+// }
 
-let test = "is2 Thi1s T4est 3a";
-order(test);
+// let test = "is2 Thi1s T4est 3a";
+// order(test);
+
+/////////////////////////////////////////////
+
+// A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
+// Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
+
+// function isPangram(string) {
+//   let alphabet = [];
+//   for (let letter = 97; letter < 123; letter++) {
+//     alphabet.push(String.fromCharCode(letter));
+//   }
+//   string = string.toLowerCase();
+//   for (letter of string) {
+//     if (alphabet.includes(letter)) {
+//       alphabet.splice(alphabet.indexOf(letter), 1);
+//     }
+//   }
+//   if (alphabet[0]) {
+//     return false;
+//   }
+//   return true;
+// }
+
+// var string = "The quick brown fox jumps over the lazy dog.";
+
+// isPangram(string);
+
+////////////////////////////////////////////////////////
+
+// replace every letter with its position in the alphabet. If anything in the text isn't a letter, ignore it and don't return it.
+
+// function alphabetPosition(text) {
+//   let numbers = [];
+//   text = text.toLowerCase();
+//   for (letter of text) {
+//     if(letter.charCodeAt() >= 97 && letter.charCodeAt() <= 122) {
+//       numbers.push(letter.charCodeAt() - 96);
+//     }
+//   }
+//   text = numbers.join(' ');
+//   return text;
+// }
+
+// let test = 'The sunset sets at twelve o\' clock';
+// alphabetPosition(test);
