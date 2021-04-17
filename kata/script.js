@@ -151,3 +151,99 @@
 
 // let test = 'The sunset sets at twelve o\' clock';
 // alphabetPosition(test);
+
+///////////////////////////////////////////////////////
+
+//Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+// domainName("http://github.com/carbonfive/raygun") == "github"
+
+function domainName(url) {
+  urlArray = [...url];
+  let nameCut = (array) => {
+    let dot = array.indexOf(".");
+    let newArray = array.slice(0, dot);
+    return newArray.join("");
+  };
+  if (
+    urlArray[0] === "w" &&
+    urlArray[1] === "w" &&
+    urlArray[2] === "w" &&
+    urlArray[3] === "."
+  ) {
+    urlArray.splice(0, 4);
+    return nameCut(urlArray);
+  } else if (
+    urlArray[0] === "h" &&
+    urlArray[1] === "t" &&
+    urlArray[2] === "t" &&
+    urlArray[3] === "p" &&
+    urlArray[4] === ":" &&
+    urlArray[5] === "/" &&
+    urlArray[6] === "/" &&
+    urlArray[7] !== "w" &&
+    urlArray[8] !== "w" &&
+    urlArray[9] !== "w" &&
+    urlArray[10] !== "."
+  ) {
+    urlArray.splice(0, 7);
+    return nameCut(urlArray);
+  } else if (
+    urlArray[0] === "h" &&
+    urlArray[1] === "t" &&
+    urlArray[2] === "t" &&
+    urlArray[3] === "p" &&
+    urlArray[4] === ":" &&
+    urlArray[5] === "/" &&
+    urlArray[6] === "/" &&
+    urlArray[7] === "w" &&
+    urlArray[8] === "w" &&
+    urlArray[9] === "w" &&
+    urlArray[10] === "."
+  ) {
+    urlArray.splice(0, 11);
+    return nameCut(urlArray);
+  } else if (
+    urlArray[0] === "h" &&
+    urlArray[1] === "t" &&
+    urlArray[2] === "t" &&
+    urlArray[3] === "p" &&
+    urlArray[4] === "s" &&
+    urlArray[5] === ":" &&
+    urlArray[6] === "/" &&
+    urlArray[7] === "/" &&
+    urlArray[8] !== "w" &&
+    urlArray[9] !== "w" &&
+    urlArray[10] !== "w" &&
+    urlArray[11] !== "."
+  ) {
+    urlArray.splice(0, 8);
+    return nameCut(urlArray);
+  } else if (
+    urlArray[0] === "h" &&
+    urlArray[1] === "t" &&
+    urlArray[2] === "t" &&
+    urlArray[3] === "p" &&
+    urlArray[4] === "s" &&
+    urlArray[5] === ":" &&
+    urlArray[6] === "/" &&
+    urlArray[7] === "/" &&
+    urlArray[8] === "w" &&
+    urlArray[9] === "w" &&
+    urlArray[10] === "w" &&
+    urlArray[11] === "."
+  ) {
+    urlArray.splice(0, 12);
+    return nameCut(urlArray);
+  } else {
+    return nameCut(urlArray);
+  }
+}
+
+// console.log(domainName("www.test.ru"));
+// console.log(domainName("http://test2.ru"));
+// console.log(domainName("https://test3.ru"));
+// console.log(domainName("https://www3.test4.ru"));
+let a = domainName("www.test.ru");
+console.log(a);
+
+// domainName("www.test.ru");
